@@ -145,7 +145,6 @@ public class DadosEmpregados {
 					break;
 				case 3:
 					currentEmployee = PutNewTypeEmployee();
-					
 					break;
 				case 4:
 					currentEmployee.paymentMethod();
