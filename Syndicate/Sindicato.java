@@ -23,9 +23,7 @@ public class Sindicato {
 		}
 		
 		System.out.printf("Current union fee: %.2f%nNew union fee: ",currentEmployee.getSyndicalFee());
-		currentEmployee.setSyndicalFee(input.nextFloat());
-		
-			
+		currentEmployee.setSyndicalFee(input.nextFloat());		
 	}
 	
 	public void enterOrExit(Empregado currentEmployee) {

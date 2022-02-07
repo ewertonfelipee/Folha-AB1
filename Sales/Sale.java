@@ -33,8 +33,4 @@ public class Sale {
 	public void setValue(float value) {
 		this.value = value;
 	}
-	
-	
-	
-	
 }

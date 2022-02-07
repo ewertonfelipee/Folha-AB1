@@ -26,65 +26,59 @@ public class PaymentSchedule {
 	    
 	    }
 	    
-	    
 	    this.day = day;
 	    this.dayWeekly = "Monday";
 	}
 	
 	public PaymentSchedule(){
 		
-		 System.out.printf("[1] Monthly [2] Weekly%n");
-  
-         if(input.nextInt() == 1){
-             System.out.printf("Day: ");
+		System.out.printf("[1] Monthly [2] Weekly%n");
+
+        if(input.nextInt() == 1){
+            System.out.printf("Day: ");
             this.day = input.next();
             this.schedule = "Monthly " + this.day;
-         }else{
-             System.out.printf("How many weeks ?%n");
-             this.day = input.next();
+        }else{
+            System.out.printf("How many weeks ?%n");
+            this.day = input.next();
             
-             int option;
-             do {
-            	 System.out.println("Day of the week ?");
-                 System.out.printf("[1] Monday%n[2] Tuesday%n[3] Wednesday%n"
-                 		+ "[4] Thursday%n[5] Friday");
-                 
-                 option = input.nextInt();
-                 switch(option) {
+            int option;
+            do {
+            	System.out.println("Day of the week ?");
+                System.out.printf("[1] Monday%n[2] Tuesday%n[3] Wednesday%n"
+                + "[4] Thursday%n[5] Friday");
+
+                option = input.nextInt();
+                switch(option) {
     	            case 1:
-    	            	 this.dayWeekly = "Monday";
-    	            	 break;
+    	            	this.dayWeekly = "Monday";
+    	            	break;
     	            case 2:
-    	            	 this.dayWeekly = "Tuesday";
-    	            	 break;
+    	            	this.dayWeekly = "Tuesday";
+    	            	break;
     	            case 3:
-    	            	 this.dayWeekly = "Wednesday";
-    	            	 break;
+    	            	this.dayWeekly = "Wednesday";
+    	            	break;
     	            case 4:
-    	            	 this.dayWeekly = "Thursday";
-    	            	 break;
+    	            	this.dayWeekly = "Thursday";
+    	            	break;
     	            case 5:
-    	            	 this.dayWeekly = "Friday";
-    	            	 break;
+    	            	this.dayWeekly = "Friday";
+    	            	break;
     	            default:
     	            	System.out.println("Invalid input!");
     	            	option = -1;
     	            	break;
-    	            	 
-                 }
-             }while(option == -1);
+                }
+            }while(option == -1);
             
-             this.schedule = "Weekly " + this.day + " " + this.dayWeekly;
-         }
-        
-		
+            this.schedule = "Weekly " + this.day + " " + this.dayWeekly;
+        }
 	}
 
 	public String getSchedule() {
 		return schedule;
 	}
-
-	
 
 	public String getDay() {
 		return day;

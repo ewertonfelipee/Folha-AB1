@@ -20,9 +20,6 @@ public class DadosEmpregados {
 	
 	Scanner input = new Scanner(System.in);
 	
-	
-	
-	
 	public DadosEmpregados() {
 		paymentSchedules.add(new PaymentSchedule("1",false,true));
 		paymentSchedules.add(new PaymentSchedule("2",false,true));
@@ -35,33 +32,18 @@ public class DadosEmpregados {
 		String name = input.next();
 		System.out.print("Enter the employee's address: ");
 		String adress = input.next();
-		
 		Empregado newEmployee = PutNewTypeEmployee();
-		
 		newEmployee.setName(name);
 		newEmployee.setAddres(adress);
-		
-	
-		
 		newEmployee.paymentMethod();
-		
 		newEmployee.setPaymentSchedule(choosePaymentSchedule());
-		
 		System.out.println("Today's date:");
-		
 		newEmployee.setLastPayment(new Date());
-		
 		System.out.printf("The employee identification is %d%n", this.identification);
-		
 		newEmployee.setNumberIdentification(this.identification++);
-		
 		this.registeredEmployees.add(newEmployee);
-		
 		this.identification++;
 		
-		
-		
-
 	}
 	
 	private Empregado PutNewTypeEmployee() {
@@ -75,7 +57,8 @@ public class DadosEmpregados {
 			typeEmployee = input.nextInt();
 			if(typeEmployee <= 0 || typeEmployee >= 4 )
 				System.out.println("Invalid input!");
-		}while(typeEmployee <= 0 || typeEmployee >= 4);
+		}
+		while(typeEmployee <= 0 || typeEmployee >= 4);
 		
 		if(typeEmployee == 1)
 			return new NonComissioned();
@@ -90,16 +73,13 @@ public class DadosEmpregados {
 		
 		int remove = 0;
 		do {
-			
 			System.out.printf("Enter the employee identification: ");
 			remove = input.nextInt();
 			if(remove <= 0 || remove > this.identification)
 				System.out.println("Invalid identification!");
-			
-		}while(remove <= 0 || remove > this.identification);
-		
+		}
+		while(remove <= 0 || remove > this.identification);
 		registeredEmployees.remove(remove-1);
-		
 		System.out.println("Finish!");
 	}
 	
@@ -109,11 +89,7 @@ public class DadosEmpregados {
 		if(currentEmployee == null)
 			return;
 		
-		
-		
 		currentEmployee.getCardPoint().addPoint(currentEmployee);
-		
-		
 		System.out.println("Finish!");
 		
 	}
@@ -129,9 +105,7 @@ public class DadosEmpregados {
 			
 			for(Empregado employeeAux : registeredEmployees) {
 				if(employeeAux.getNumberIdentification() == identificationAux)
-					currentEmployee = employeeAux;
-				
-					
+					currentEmployee = employeeAux;		
 			}
 			if(currentEmployee == null) {
 				System.out.printf("Invalid identification!%n"
@@ -139,8 +113,9 @@ public class DadosEmpregados {
 				if(input.nextInt() == 2)
 					return null;
 			}
-		}while(currentEmployee == null);
-		
+		}
+		while(currentEmployee == null);
+
 		return currentEmployee;
 	}
 	
@@ -150,11 +125,8 @@ public class DadosEmpregados {
 		if(currentEmployee == null)
 			return;
 		
-		
-		
 		boolean flag = true;
 		int option;
-		
 		System.out.println("Select the employee information you want to edit:");
 		do {
 			System.out.printf("[1] Name%n[2] Address%n[3] Type%n[4] Payment Method%n"
@@ -197,7 +169,8 @@ public class DadosEmpregados {
 			if(input.nextInt() == 2)
 				flag = false;
 			
-		}while(flag);
+		}
+		while(flag);
 		
 	}
 	
@@ -237,8 +210,7 @@ public class DadosEmpregados {
 				option = 1;
 			}else
 				verification = true;
-				
-			
+					
 		}while(!verification);
 		
 		return paymentSchedules.get(option-1);
@@ -253,8 +225,7 @@ public class DadosEmpregados {
 		System.out.printf("Current payment shedule: %s%n", currentEmployee.getPaymentSchedule().getSchedule());
 		System.out.printf("To edit ?%n[1] Yes [2] No");
 		if(input.nextInt() == 1)
-			currentEmployee.setPaymentSchedule(choosePaymentSchedule());
-		
+			currentEmployee.setPaymentSchedule(choosePaymentSchedule());	
 	}
 	public void newPaymentSchedule() {
 		paymentSchedules.add(new PaymentSchedule());
@@ -266,12 +237,9 @@ public class DadosEmpregados {
 		
 		for(Empregado auxEmployee : registeredEmployees ) {
 			if(mustBePaid(auxEmployee,todayDate)) {
-				
 				pay(auxEmployee);
 				auxEmployee.setLastPayment(todayDate);
 			}
-				
-			
 		}
 	}
 	
@@ -282,10 +250,7 @@ public class DadosEmpregados {
 		int daysWorkeds=0;
 		int[] daysPerMonth = Date.getDayspermonth();
 		
-	
-		
 		if(auxSchedule.isWeekly()) {
-			
 			
 			weeks = Integer.parseInt(auxSchedule.getDay());
 			total = weeks*7;
@@ -298,7 +263,7 @@ public class DadosEmpregados {
 			else if(auxSchedule.getDayWeekly().equals("Friday"))
 				total += 4;
 			
-		}else {
+		}else{
 			if( (employee.getLastPayment().getMonth() +1) == todayDate.getMonth() &&
 				employee.getLastPayment().getDay() == todayDate.getDay())
 				return true;
@@ -306,21 +271,20 @@ public class DadosEmpregados {
 				return false;
 		}
 		
-		 if(todayDate.getMonth() != employee.getLastPayment().getMonth()){
+		if(todayDate.getMonth() != employee.getLastPayment().getMonth()){
 
-             daysWorkeds += daysPerMonth[employee.getLastPayment().getMonth()]
-                     - employee.getLastPayment().getDay();
-             daysWorkeds += todayDate.getDay();
+            daysWorkeds += daysPerMonth[employee.getLastPayment().getMonth()]
+                - employee.getLastPayment().getDay();
+            daysWorkeds += todayDate.getDay();
 
-         }
-         else{
-             daysWorkeds = todayDate.getDay() - employee.getLastPayment().getDay();
-         }
-		 
-		 if(daysWorkeds >= total)
-			 return true;
-		 else 
-			 return false;
+        }
+        else{
+            daysWorkeds = todayDate.getDay() - employee.getLastPayment().getDay();
+        }
+		if(daysWorkeds >= total)
+			return true;
+		else 
+			return false;
 		
 	}
 	
@@ -345,13 +309,10 @@ public class DadosEmpregados {
 			
 
 			((PayedByHour) employee).setExtraHours(0);
-			
 		}
 		
 		System.out.printf("Net salary: %.2f%n", employee.getGrossSalary() + extraHourValue
 				+ salesValue - deductios);
-		
-		
 	}
 	private float totalSalesValue(Empregado employee) {
 		
@@ -368,8 +329,6 @@ public class DadosEmpregados {
 		
 		System.out.printf("Service fee: %.2f%nUnion fee: %.2f%n",employee.getServiceFee(),employee.getSyndicalFee());
 		return employee.getServiceFee() + employee.getSyndicalFee();
-		
 	}
-	
-	
+
 }

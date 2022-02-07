@@ -14,31 +14,25 @@ public class Empregado {
 	private String name;
 	private String addres;
 	private int numberIdentification;
-	
 	private boolean pertenceSindicato;
 	private int numeroUnicoSindicato;
 	private double syndicalFee=0;
 	private double serviceFee=0;
-	
 	private Date lastPayment;
 	private double grossSalary = 2000;
-	
-	
 	private Card cardPoint = new Card();
 	private PaymentMethod paymentMethod = null;
-	
 	private PaymentSchedule paymentSchedule;
 	
 	Scanner input = new Scanner(System.in);
-	
 
-	
 	public void paymentMethod() {
 		
 		if(paymentMethod != null)
 			System.out.printf("Current method: %s\n", this.paymentMethod);
 		
 		int method = 0;
+
 		do {
 			System.out.println("Enter the new method that you want:");
 			System.out.println("[1] Check by mail");
@@ -47,7 +41,8 @@ public class Empregado {
 			method = input.nextInt();
 			if(method <= 0 || method >= 4 )
 				System.out.println("Invalid input!");
-		}while(method <= 0 || method >= 4 );
+		}
+		while(method <= 0 || method >= 4 );
 		
 		if(method == 1)
 			this.paymentMethod = PaymentMethod.CHECK_MAIL;
@@ -58,12 +53,6 @@ public class Empregado {
 		
 	}
 	
-	
-	
-	
-	
-
-
 	public double getServiceFee() {
 		return serviceFee;
 	}
@@ -71,7 +60,6 @@ public class Empregado {
 	public void setServiceFee(float serviceFee) {
 		this.serviceFee = serviceFee;
 	}
-
 
 	public String getName() {
 		return name;
@@ -84,8 +72,6 @@ public class Empregado {
 	public PaymentMethod getPaymentMethod() {
 		return paymentMethod;
 	}
-
-
 
 	public double getGrossSalary() {
 		return grossSalary;
@@ -122,7 +108,6 @@ public class Empregado {
 		this.syndicalFee = syndicalFee;
 	}
 
-
 	public void setPertenceSindicato(boolean pertenceSindicato) {
 		this.pertenceSindicato = pertenceSindicato;
 	}
@@ -138,7 +123,6 @@ public class Empregado {
 	public void setAddres(String addres) {
 		this.addres = addres;
 	}
-
 
 	public Card getCardPoint() {
 		return cardPoint;
@@ -164,9 +148,6 @@ public class Empregado {
 		this.numeroUnicoSindicato = numeroUnicoSindicato;
 	}
 
-	
-	
-	
 	public boolean isPertenceSindicato() {
 		return pertenceSindicato;
 	}
@@ -175,7 +156,7 @@ public class Empregado {
 		if(pertenceSindicato) 
 			return 1;
 		else
-			 return 0;
+			return 0;
 		
 	}
 	

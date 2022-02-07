@@ -11,9 +11,8 @@ public class Main {
 		
 		Scanner input = new Scanner(System.in);
 		int option = 0;
-		
+
 		DadosEmpregados managerEmployee = new DadosEmpregados();
-		
 		
 		System.out.println("Payroll System");
 		do {
@@ -71,9 +70,6 @@ public class Main {
 			
 		} while(option != 0);
 
-			
-
-		
 		input.close();
 	}
 
